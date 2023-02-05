@@ -10,7 +10,7 @@ const errorHandler = (err: Error, _req: Request, res: Response, _next: NextFunct
   }
 
   if (err instanceof UnableToGiveTipsError) {
-    return res.status(404).json({
+    return res.status(503).json({
       message: err.message,
     })
   }

@@ -3,6 +3,7 @@ import type { NextFunction, Request, Response } from 'express'
 import { GetTipsBodySchema, GetTipsSchema } from '../../middlewares/validation/schemas/tips'
 import { generateDeckTipsPrompt, openai } from '../../services/openAI'
 import { UnableToGiveTipsError } from '../../errors/UnableToGiveTips'
+import { isOpenAIEnabled } from '../../helpers/runtime'
 
 type GetTipsBody = z.infer<typeof GetTipsBodySchema>
 
@@ -14,6 +15,10 @@ export const getTips = async (
   try {
     const { body } = GetTipsSchema.parse(req)
     const { deck } = body
+
+    if (!isOpenAIEnabled()) {
+      throw new UnableToGiveTipsError()
+    }
 
     const completion = await openai.createCompletion({
       model: 'text-davinci-003',
