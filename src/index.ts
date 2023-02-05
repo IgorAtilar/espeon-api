@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { app } from '@/app'
+import { app } from './app'
 
 const SERVER_PORT = process.env.SERVER_PORT ?? 3000
 

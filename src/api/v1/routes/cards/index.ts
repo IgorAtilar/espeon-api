@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import { validate } from '@/api/v1/middlewares/validation'
-import { GetCardsSchema } from '@/api/v1/middlewares/validation/schemas/cards'
-import { getCards } from '@/api/v1/controllers/cards'
+import { validate } from '../../middlewares/validation'
+import { GetCardsSchema } from '../../middlewares/validation/schemas/cards'
+import { getCards } from '../../controllers/cards'
 
 const cardsRoutes = Router()
 

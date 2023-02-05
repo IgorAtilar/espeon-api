@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
-import { errorHandler } from '@/api/v1/middlewares/error'
-import { routes } from '@/api/v1/routes'
+import { errorHandler } from '../api/v1/middlewares/error'
+import { routes } from '../api/v1/routes'
 
 const app = express()
 

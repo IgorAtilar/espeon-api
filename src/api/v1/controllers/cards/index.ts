@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import type { NextFunction, Request, Response } from 'express'
-import { pokemonTCGAPI } from '@/api/v1/services/pokemonTCGAPI'
-import { GetCardsPokemonTCGAPIResponse } from '@/api/v1/services/pokemonTCGAPI/types'
+import { pokemonTCGAPI } from '../../services/pokemonTCGAPI'
+import { GetCardsPokemonTCGAPIResponse } from '../../services/pokemonTCGAPI/types'
 import {
   GetCardsQuerySchema,
   GetCardsParamsSchema,
