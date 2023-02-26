@@ -1,12 +1,25 @@
 import { z } from 'zod'
 
+export const CardSchema = z
+  .object({
+    name: z
+      .string({
+        invalid_type_error: 'The card name should be a string.',
+        required_error: 'The card name is required.',
+      })
+      .trim(),
+    type: z.enum(['Energy', 'Pokémon', 'Trainer'], {
+      invalid_type_error: 'The card type should be a string.',
+      required_error: 'The card type is required.',
+    }),
+  })
+  .strip()
+
 export const GetTipsBodySchema = z.object({
-  deck: z
-    .string({
-      invalid_type_error: 'The deck value need to be a string.',
-      required_error: 'The deck value is required.',
-    })
-    .trim(),
+  deck: z.array(CardSchema, {
+    invalid_type_error: 'The deck should be an array of cards.',
+    required_error: 'The deck is required.',
+  }),
 })
 
 export const GetTipsSchema = z
@@ -15,8 +28,8 @@ export const GetTipsSchema = z
       body: GetTipsBodySchema,
     },
     {
-      invalid_type_error: 'The body value should be a object.',
-      required_error: 'You need to send a deck.',
+      invalid_type_error: 'The body value should be an object.',
+      required_error: 'The deck array is required.',
     }
   )
   .strip()

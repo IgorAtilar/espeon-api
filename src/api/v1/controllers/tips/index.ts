@@ -14,7 +14,7 @@ export const getTips = async (
 ) => {
   try {
     const { body } = GetTipsSchema.parse(req)
-    const { deck } = body
+    const { deck } = GetTipsBodySchema.parse(body)
 
     if (!isOpenAIEnabled()) {
       throw new UnableToGiveTipsError()
